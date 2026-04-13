@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NexTech — MindEcho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+</head>
+
+<body>
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Scroll progress -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Global animated SVG paths (flowing background) -->
+  <div class="flow-bg" aria-hidden="true">
+    <svg class="flow-svg flow-svg-1" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <path class="fp fp1" d="M-200 400 C200 200 400 600 800 300 S1200 100 1600 400" stroke="rgba(124,156,255,0.18)" stroke-width="1.5" fill="none"/>
+      <path class="fp fp2" d="M-100 600 C300 300 600 700 900 400 S1300 200 1700 500" stroke="rgba(255,148,90,0.14)" stroke-width="1" fill="none"/>
+      <path class="fp fp3" d="M0 200 C400 400 500 100 900 300 S1300 500 1600 200" stroke="rgba(170,120,255,0.12)" stroke-width="1.2" fill="none"/>
+      <path class="fp fp4" d="M-300 700 C100 500 500 800 900 550 S1300 350 1700 650" stroke="rgba(124,156,255,0.10)" stroke-width="0.8" fill="none"/>
+      <path class="fp fp5" d="M100 100 C300 300 700 50 1000 250 S1400 450 1700 150" stroke="rgba(255,110,170,0.10)" stroke-width="1" fill="none"/>
+      <path class="fp fp6" d="M-150 850 C250 650 650 900 950 700 S1350 500 1650 800" stroke="rgba(170,120,255,0.08)" stroke-width="0.7" fill="none"/>
+    </svg>
+    <svg class="flow-svg flow-svg-2" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <path class="fp fp7" d="M1600 300 C1200 500 900 200 500 450 S100 700 -200 350" stroke="rgba(124,156,255,0.12)" stroke-width="1.2" fill="none"/>
+      <path class="fp fp8" d="M1700 550 C1400 350 1000 600 700 400 S300 200 -100 500" stroke="rgba(255,148,90,0.10)" stroke-width="0.9" fill="none"/>
+      <path class="fp fp9" d="M1500 750 C1100 600 800 800 500 650 S200 450 -200 700" stroke="rgba(170,120,255,0.09)" stroke-width="0.8" fill="none"/>
+    </svg>
+  </div>
+
+  <!-- Mouse spotlight -->
+  <div class="mouse-spotlight" id="mouseSpotlight"></div>
+
+  <div class="global-noise"></div>
+  <!-- Interactive wave background — global background -->
+  <canvas id="dotCanvas" aria-hidden="true"></canvas>
+
+  <header class="global-nav">
+    <div class="container nav-row">
+      <a class="brand" href="#top">
+        <img src="nexlogo.png" alt="NexTech logo" class="brand-logo" />
+        <span class="brand-name">NexTech</span>
+      </a>
+      <nav class="global-links">
+        <a href="#work">Work</a>
+        <a href="#capabilities">Capabilities</a>
+        <a href="#team">Team</a>
+        <a href="#contact" class="pill">Contact</a>
+      </nav>
+      <!-- Mobile hamburger -->
+      <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="spotlight s1"></div>
+      <div class="spotlight s2"></div>
+
+      <div class="container hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow"><span class="eyebrow-dot"></span>NexTech · Building what's next</p>
+
+          <img src="nexlogo.png" class="hero-logo" alt="NexTech logo" />
+
+          <h1 class="h1">
+            <span class="word-reveal">Turning ideas into</span>
+            <span class="word-reveal delay-1">powerful digital</span>
+            <span class="word-reveal delay-2 gradient-text">experiences.</span>
+          </h1>
+
+          <p class="lead">
+            NexTech is a team of innovators building smart, AI-powered digital products that turn complex challenges into intelligent solutions.
+          </p>
+
+          <div class="cta-row">
+            <a class="button magnetic" href="#work">View Project</a>
+            <a class="button ghost magnetic" href="#team">Meet the Team</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-num" data-target="3">0</span>
+              <span class="stat-label">AI Modules</span>
+            </div>
+            <div class="stat-sep"></div>
+            <div class="stat-item">
+              <span class="stat-num" data-target="5">0</span>
+              <span class="stat-label">Team Members</span>
+            </div>
+            <div class="stat-sep"></div>
+            <div class="stat-item">
+              <span class="stat-num" data-target="1">0</span>
+              <span class="stat-label">Flagship Product</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Interactive Robot -->
+        <div class="hero-visual hero-robot-outer" aria-label="Interactive 3D AI robot">
+          <div class="hero-robot-inner">
+            <div class="robot-ambient-glow"></div>
+            <div class="robot-ring ring1"></div>
+            <div class="robot-ring ring2"></div>
+            <spline-viewer
+              url="https://prod.spline.design/PyzDhpQ9E5f1E3MT/scene.splinecode"
+              class="hero-spline"
+            ></spline-viewer>
+            <!-- Integration fades -->
+            <div class="robot-fade-bottom"></div>
+            <div class="robot-fade-left"></div>
+            <div class="robot-fade-top"></div>
+            <div class="float-chip chip1">Computer Vision</div>
+            <div class="float-chip chip2">AI Models</div>
+            <div class="float-chip chip3">NLP</div>
+            <div class="float-chip chip4">Attention Tracking</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUR PROJECT — Radial Orbital -->
+    <section class="section orbital-section" id="work" data-observe>
+      <div class="container">
+        <div class="orbital-head">
+          <span class="section-label">Featured Work</span>
+          <h2 class="h2 scramble-text">Our Project.</h2>
+          <p class="sub">MindEcho is our flagship build — a non-diagnostic, AI-powered screening support platform that helps schools and parents understand early attention and behaviour patterns in children.</p>
+        </div>
+      </div>
+
+      <!-- Orbital stage — full width -->
+      <div class="orbital-stage" id="orbitalStage">
+
+        <!-- Centre: MindEcho logo -->
+        <div class="orbital-center" id="orbitalCenter">
+          <div class="orbital-center-ping"></div>
+          <div class="orbital-center-ping delay"></div>
+          <div class="orbital-center-img">
+            <img src="mindecho.jpeg" alt="MindEcho">
+          </div>
+        </div>
+
+        <!-- Orbit ring -->
+        <div class="orbital-ring"></div>
+
+        <!-- Nodes injected by JS -->
+      </div>
+
+      <!-- Info panel (shown on node click) -->
+      <div class="orbital-panel" id="orbitalPanel">
+        <button class="orbital-panel-close" id="orbitalPanelClose">✕</button>
+        <div class="orbital-panel-status" id="orbitalPanelStatus"></div>
+        <h3 class="orbital-panel-title" id="orbitalPanelTitle"></h3>
+        <p class="orbital-panel-desc" id="orbitalPanelDesc"></p>
+        <div class="orbital-panel-tags" id="orbitalPanelTags"></div>
+
+      </div>
+    </section>
+
+    <!-- CAPABILITIES -->
+    <section id="capabilities" class="section cap-section" data-observe>
+      <div class="container">
+        <div class="cap-head">
+          <span class="section-label">What we bring</span>
+          <h2 class="h2 scramble-text">Capabilities.</h2>
+          <p class="sub">We keep the visuals clean — and the engineering strong.</p>
+        </div>
+
+        <div class="cap-flip-grid">
+
+          <!-- Card 1 -->
+          <div class="cap-flip-wrap">
+            <div class="cap-flip-inner">
+              <div class="cap-flip-front">
+                <div class="cap-flip-num">01</div>
+                <h3 class="cap-flip-title">Premium UI Engineering</h3>
+                <p class="cap-flip-sub">Interaction design</p>
+                <div class="cap-flip-hint">Hover to explore →</div>
+              </div>
+              <div class="cap-flip-back" data-flip-color="blue">
+                <div class="cap-flip-back-glow"></div>
+                <div class="cap-flip-num back-num">01</div>
+                <h3 class="cap-flip-title">Premium UI Engineering & Interaction Design</h3>
+                <p class="cap-flip-desc">Crafting high-fidelity interfaces with deliberate motion, precise spacing, and pixel-level attention — from Figma prototype to production code.</p>
+                <div class="cap-tag-row">
+                  <span class="cap-tag">Figma</span>
+                  <span class="cap-tag">React</span>
+                  <span class="cap-tag">CSS</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="cap-flip-wrap">
+            <div class="cap-flip-inner">
+              <div class="cap-flip-front">
+                <div class="cap-flip-num">02</div>
+                <h3 class="cap-flip-title">Data Preprocessing</h3>
+                <p class="cap-flip-sub">Feature engineering & evaluation</p>
+                <div class="cap-flip-hint">Hover to explore →</div>
+              </div>
+              <div class="cap-flip-back" data-flip-color="purple">
+                <div class="cap-flip-back-glow"></div>
+                <div class="cap-flip-num back-num">02</div>
+                <h3 class="cap-flip-title">Data Preprocessing & Feature Engineering</h3>
+                <p class="cap-flip-desc">Turning raw, messy datasets into clean, structured inputs — with evaluation pipelines that actually tell you if your model is working.</p>
+                <div class="cap-tag-row">
+                  <span class="cap-tag">Python</span>
+                  <span class="cap-tag">Pandas</span>
+                  <span class="cap-tag">scikit-learn</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="cap-flip-wrap">
+            <div class="cap-flip-inner">
+              <div class="cap-flip-front">
+                <div class="cap-flip-num">03</div>
+                <h3 class="cap-flip-title">Multimodal AI</h3>
+                <p class="cap-flip-sub">CV + NLP + attention signals</p>
+                <div class="cap-flip-hint">Hover to explore →</div>
+              </div>
+              <div class="cap-flip-back" data-flip-color="orange">
+                <div class="cap-flip-back-glow"></div>
+                <div class="cap-flip-num back-num">03</div>
+                <h3 class="cap-flip-title">Multimodal AI: CV + NLP + Attention</h3>
+                <p class="cap-flip-desc">Combining computer vision, natural language processing, and behavioural signals into a single intelligent pipeline that sees what humans miss.</p>
+                <div class="cap-tag-row">
+                  <span class="cap-tag">OpenCV</span>
+                  <span class="cap-tag">MediaPipe</span>
+                  <span class="cap-tag">NLP</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="cap-flip-wrap">
+            <div class="cap-flip-inner">
+              <div class="cap-flip-front">
+                <div class="cap-flip-num">04</div>
+                <h3 class="cap-flip-title">Security-First Mindset</h3>
+                <p class="cap-flip-sub">For student data</p>
+                <div class="cap-flip-hint">Hover to explore →</div>
+              </div>
+              <div class="cap-flip-back" data-flip-color="blue">
+                <div class="cap-flip-back-glow"></div>
+                <div class="cap-flip-num back-num">04</div>
+                <h3 class="cap-flip-title">Security-First Mindset for Student Data</h3>
+                <p class="cap-flip-desc">Every design decision is made with privacy in mind. Role-based access, secure endpoints, and zero tolerance for data leakage — especially when children are involved.</p>
+                <div class="cap-tag-row">
+                  <span class="cap-tag">FastAPI</span>
+                  <span class="cap-tag">SQLite</span>
+                  <span class="cap-tag">Auth</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM — Staggered Photo Grid + Name List + Flip Cards -->
+    <section id="team" class="section team-section" data-observe>
+      <div class="container">
+        <span class="section-label">The people</span>
+        <h2 class="h2 scramble-text">Meet the Team.</h2>
+        <p class="sub">Hover to focus. Click a photo to reveal their story.</p>
+
+        <div class="team-layout">
+
+          <!-- LEFT: Staggered photo grid -->
+          <div class="team-photo-grid">
+
+            <div class="team-col col-1">
+              <div class="team-photo-wrap" data-member="bushra">
+                <div class="team-flip-card">
+                  <div class="team-flip-inner">
+                    <div class="team-flip-front">
+                      <img src="panda.jpg" alt="Bushra Siddiqui">
+                      <div class="photo-overlay">
+                        <span class="photo-hint">click to flip</span>
+                      </div>
+                    </div>
+                    <div class="team-flip-back">
+                      <div class="flip-back-content">
+                        <p class="flip-back-tag">Contribution</p>
+                        <h4 class="flip-back-name">Bushra</h4>
+                        <ul class="flip-back-list">
+                          <li>Led full-stack architecture</li>
+                          <li>Built NLP speech pipeline</li>
+                          <li>Deployed ML to production</li>
+                          <li>Designed scoring algorithm</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="team-photo-wrap" data-member="mahsa">
+                <div class="team-flip-card">
+                  <div class="team-flip-inner">
+                    <div class="team-flip-front">
+                      <img src="mahsa.JPG" alt="Mahsa Mozafari">
+                      <div class="photo-overlay">
+                        <span class="photo-hint">click to flip</span>
+                      </div>
+                    </div>
+                    <div class="team-flip-back">
+                      <div class="flip-back-content">
+                        <p class="flip-back-tag">Contribution</p>
+                        <h4 class="flip-back-name">Mahsa</h4>
+                        <ul class="flip-back-list">
+                          <li>Built all frontend UI screens</li>
+                          <li>Responsive design & fixes</li>
+                          <li>Polished micro-animations</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="team-col col-2">
+              <div class="team-photo-wrap" data-member="diya">
+                <div class="team-flip-card">
+                  <div class="team-flip-inner">
+                    <div class="team-flip-front">
+                      <img src="diya2.jpg" alt="Diya Ashique">
+                      <div class="photo-overlay">
+                        <span class="photo-hint">click to flip</span>
+                      </div>
+                    </div>
+                    <div class="team-flip-back">
+                      <div class="flip-back-content">
+                        <p class="flip-back-tag">Contribution</p>
+                        <h4 class="flip-back-name">Diya</h4>
+                        <ul class="flip-back-list">
+                          <li>Trained ML models for behaviour classification</li>
+                          <li>Built backend inference pipeline</li>
+                          <li>Integrated evaluation metrics into dashboard</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="team-photo-wrap" data-member="erfan">
+                <div class="team-flip-card">
+                  <div class="team-flip-inner">
+                    <div class="team-flip-front">
+                      <img src="erfan.PNG" alt="Erfan Hatampour">
+                      <div class="photo-overlay">
+                        <span class="photo-hint">click to flip</span>
+                      </div>
+                    </div>
+                    <div class="team-flip-back">
+                      <div class="flip-back-content">
+                        <p class="flip-back-tag">Contribution</p>
+                        <h4 class="flip-back-name">Erfan</h4>
+                        <ul class="flip-back-list">
+                          <li>Feature engineering & model tuning</li>
+                          <li>UX flow design</li>
+                          <li>Model comparison workflows</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="team-col col-3">
+              <div class="team-photo-wrap" data-member="kainaz">
+                <div class="team-flip-card">
+                  <div class="team-flip-inner">
+                    <div class="team-flip-front">
+                      <img src="kiy.jpg" alt="Kainaz Chohan">
+                      <div class="photo-overlay">
+                        <span class="photo-hint">click to flip</span>
+                      </div>
+                    </div>
+                    <div class="team-flip-back">
+                      <div class="flip-back-content">
+                        <p class="flip-back-tag">Contribution</p>
+                        <h4 class="flip-back-name">Kainaz</h4>
+                        <ul class="flip-back-list">
+                          <li>Real-time frontend tracking</li>
+                          <li>Backend session processing</li>
+                          <li>Model output rendering tools</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /team-photo-grid -->
+
+          <!-- RIGHT: Name list (Bushra first as Lead) -->
+          <div class="team-name-list">
+
+            <div class="team-name-row" data-member="bushra">
+              <div class="team-name-bar"></div>
+              <div class="team-name-info">
+                <span class="team-name-text">Bushra Siddiqui</span>
+                <span class="team-role-text">LEAD · AI · MODEL</span>
+              </div>
+            </div>
+
+            <div class="team-name-row" data-member="diya">
+              <div class="team-name-bar"></div>
+              <div class="team-name-info">
+                <span class="team-name-text">Diya Ashique</span>
+                <span class="team-role-text">AI · BACKEND · DATA</span>
+              </div>
+            </div>
+
+            <div class="team-name-row" data-member="kainaz">
+              <div class="team-name-bar"></div>
+              <div class="team-name-info">
+                <span class="team-name-text">Kainaz Chohan</span>
+                <span class="team-role-text">BACKEND · DATA · UI</span>
+              </div>
+            </div>
+
+            <div class="team-name-row" data-member="erfan">
+              <div class="team-name-bar"></div>
+              <div class="team-name-info">
+                <span class="team-name-text">Erfan Hatampour</span>
+                <span class="team-role-text">FRONTEND · MODEL</span>
+              </div>
+            </div>
+
+            <div class="team-name-row" data-member="mahsa">
+              <div class="team-name-bar"></div>
+              <div class="team-name-info">
+                <span class="team-name-text">Mahsa Mozafari</span>
+                <span class="team-role-text">FRONTEND · UI</span>
+              </div>
+            </div>
+
+          </div><!-- /team-name-list -->
+
+        </div><!-- /team-layout -->
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section alt" id="contact" data-observe>
+      <div class="container contact">
+        <span class="section-label">Get in touch</span>
+        <h2 class="h2 scramble-text">Let's collaborate.</h2>
+        <div class="contact-row">
+          <a class="button magnetic" href="https://www.instagram.com/mindechoai/" target="_blank" rel="noopener noreferrer">MindEcho Instagram</a>
+          <a class="button ghost magnetic" href="https://github.com/MindEcho-AI/MindEcho-ADHD-Screening" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-row">
+      <span>©️ <span id="year"></span> NexTech</span>
+      <a class="textlink" href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
