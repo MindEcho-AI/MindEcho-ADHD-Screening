@@ -1,0 +1,116 @@
+/* Global Tailwind styles for the MindEcho frontend,
+   including shared buttons, cards, forms, navigation, and utility classes. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base typography and page colors */
+@layer base {
+  html {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background-color: #F5F0E8;
+    color: #2C1810;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito', system-ui, sans-serif;
+  }
+}
+
+/* Shared component classes used throughout the interface */
+@layer components {
+  /* Reusable button styles */
+  .btn-primary {
+    @apply bg-bark-800 text-cream-100 font-display font-semibold px-6 py-3 rounded-btn
+           hover:bg-bark-900 active:scale-95 transition-all duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed
+           flex items-center justify-center gap-2;
+  }
+
+  .btn-green {
+    @apply bg-primary-600 text-white font-display font-semibold px-6 py-3 rounded-btn
+           hover:bg-primary-700 active:scale-95 transition-all duration-150
+           disabled:opacity-50 disabled:cursor-not-allowed
+           flex items-center justify-center gap-2;
+  }
+
+  .btn-danger {
+    @apply bg-danger text-white font-display font-semibold px-6 py-3 rounded-btn
+           hover:bg-red-700 active:scale-95 transition-all duration-150
+           flex items-center justify-center gap-2;
+  }
+
+  .btn-outline {
+    @apply border-2 border-bark-800 text-bark-800 font-display font-semibold px-6 py-3 rounded-btn
+           hover:bg-bark-800 hover:text-cream-100 active:scale-95 transition-all duration-150
+           flex items-center justify-center gap-2;
+  }
+
+  /* Card container styles */
+  .card {
+    @apply bg-white rounded-card shadow-card p-6;
+  }
+
+  .card-hover {
+    @apply card cursor-pointer hover:shadow-card-hover hover:-translate-y-0.5 transition-all duration-200;
+  }
+
+  /* Form input and label styles */
+  .input {
+    @apply w-full bg-cream-100 border border-cream-300 rounded-btn px-4 py-3
+           font-body text-bark-900 placeholder-bark-400
+           focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent
+           transition-all duration-150;
+  }
+
+  .label {
+    @apply block font-body font-medium text-bark-700 mb-1.5 text-sm;
+  }
+
+  /* Likelihood badge styles */
+  .badge-low    { @apply inline-flex items-center gap-1 px-3 py-1 rounded-pill text-xs font-semibold bg-primary-100 text-primary-700; }
+  .badge-medium { @apply inline-flex items-center gap-1 px-3 py-1 rounded-pill text-xs font-semibold bg-amber-100 text-amber-700; }
+  .badge-high   { @apply inline-flex items-center gap-1 px-3 py-1 rounded-pill text-xs font-semibold bg-red-100 text-red-700; }
+
+  /* Sidebar navigation item styles */
+  .nav-item {
+    @apply flex items-center gap-3 px-4 py-3 rounded-btn font-body font-medium text-bark-600
+           hover:bg-cream-200 hover:text-bark-900 transition-all duration-150 cursor-pointer;
+  }
+
+  .nav-item-active {
+    @apply nav-item bg-primary-600 text-white hover:bg-primary-700 hover:text-white;
+  }
+
+  /* Section header styles */
+  .section-header {
+    @apply bg-primary-600 text-white rounded-t-card px-6 py-5;
+  }
+
+  /* Status indicator dot styles */
+  .status-dot-pending    { @apply w-2 h-2 rounded-full bg-gray-400; }
+  .status-dot-processing { @apply w-2 h-2 rounded-full bg-amber-400 animate-pulse; }
+  .status-dot-completed  { @apply w-2 h-2 rounded-full bg-green-500; }
+  .status-dot-failed     { @apply w-2 h-2 rounded-full bg-red-500; }
+}
+
+/* Utility helpers for gradients, scrollbars, and animations */
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #d4dba1 transparent;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out both;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
