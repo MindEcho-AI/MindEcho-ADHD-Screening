@@ -1,0 +1,36 @@
+# Python virtual environments
+venv/
+venv_win/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment files
+.env
+
+# Local databases
+*.db
+*.sqlite3
+
+# Runtime-generated folders
+backend/uploads/*
+backend/data/*
+!backend/uploads/.gitkeep
+!backend/data/.gitkeep
+
+# Frontend dependencies/build
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor settings
+.vscode/
+.idea/
