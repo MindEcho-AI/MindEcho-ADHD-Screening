@@ -2,6 +2,9 @@
 
 Mindecho ia an AI-based behavioral and cognitive screening platform for early ADHD-related indicators in children. It combines eye movement analysis, body movement tracking, and speech analysis to generate an assessment report for teachers and educational support environments.
 
+## Website
+[Open our website](https://mindecho-ai.github.io/MindEcho-ADHD-Screening/)
+
 ## Demo Video
 [Watch our YouTube demo](https://www.youtube.com/watch?v=DLmSyNQe68w)
 
